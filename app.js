@@ -8,7 +8,7 @@ const Resolvers = require('./resolvers/resolvers');
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '10mb'}));
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
