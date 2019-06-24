@@ -1,16 +1,15 @@
 const Image = require('../models/image');
 
 module.exports = {
-  images: () => {
-    return Image.find()
-      .then(images => {
-        return images.map(image => {
-          return { ...image._doc, _id: image._id };
-        });
-      })
-      .catch(err => {
-        console.log(err);
+  images: async () => {
+    try {
+      const images = await Image.find();
+      return images.map(image => {
+        return { ...image._doc, _id: image._id };
       });
+    } catch (err) {
+      console.log(err);
+    }
   },
 
   addImage: async args => {
@@ -24,10 +23,14 @@ module.exports = {
       const result = await image.save();
       console.log(result);
       return { ...result._doc, _id: image._id };
-    }
-    catch (err) {
+    } catch (err) {
       console.log(err);
       throw err;
     }
-  }
+  },
+
+  // removeImage: async id => {
+  //   return Image.findByIdAndDelete(id).then(() => Image.find());
+  //   // console.log(Image.findByIdAndDelete({ _id: id }));
+  // }
 };

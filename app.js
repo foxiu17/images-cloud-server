@@ -35,7 +35,9 @@ mongoose
       process.env.MONGO_PASSWORD
     }@mongodbbase-r2irl.mongodb.net/${
       process.env.MONGO_DB
-    }?retryWrites=true&w=majority`
+    }?retryWrites=true&w=majority`, {
+      useNewUrlParser: true
+    }
   )
   .then(() => {
     app.listen(8000);
