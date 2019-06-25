@@ -16,6 +16,11 @@ const imageSchema = new Schema({
   date: {
     type: Date,
     required: true
+  },
+
+  uniq: {
+    type: String,
+    required: true
   }
 
 });

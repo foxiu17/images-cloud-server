@@ -7,12 +7,14 @@ module.exports = buildSchema(`
     file: String!
     url: String!
     date: String!
+    uniq: String!
   }
 
   input ImageInput {
     file: String!
     url: String!
     date: String!
+    uniq: String!
   }
 
   type RootQuery {

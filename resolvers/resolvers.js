@@ -16,12 +16,12 @@ module.exports = {
     const image = new Image({
       file: args.imageInput.file,
       url: args.imageInput.url,
-      date: new Date(args.imageInput.date)
+      date: new Date(args.imageInput.date),
+      uniq: args.imageInput.uniq
     });
 
     try {
       const result = await image.save();
-      console.log(result);
       return { ...result._doc, _id: image._id };
     } catch (err) {
       console.log(err);
@@ -29,8 +29,11 @@ module.exports = {
     }
   },
 
-  // removeImage: async id => {
-  //   return Image.findByIdAndDelete(id).then(() => Image.find());
-  //   // console.log(Image.findByIdAndDelete({ _id: id }));
-  // }
+  removeImage: async ({_id})=> {
+    return new Promise((resolve, reject) => {
+      Image.findByIdAndDelete(_id).exec((err, res) => {
+        err ? reject(err) : resolve(res);
+      });
+    });
+  }
 };
