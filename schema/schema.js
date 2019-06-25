@@ -23,7 +23,7 @@ module.exports = buildSchema(`
 
   type RootMutation {
     addImage(imageInput: ImageInput): Image
-    removeImage(_id: ID!): Image
+    removeImage(uniq: String!): Image
   }
 
   schema {

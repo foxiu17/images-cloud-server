@@ -29,9 +29,9 @@ module.exports = {
     }
   },
 
-  removeImage: async ({_id})=> {
+  removeImage: async ({uniq})=> {
     return new Promise((resolve, reject) => {
-      Image.findByIdAndDelete(_id).exec((err, res) => {
+      Image.findOneAndDelete({uniq: uniq}).exec((err, res) => {
         err ? reject(err) : resolve(res);
       });
     });
