@@ -27,12 +27,13 @@ module.exports = buildSchema(`
 
   type RootQuery {
     images: [Image!]
-    favoriteImages: [FavoriteImage!]
+    favoriteImages: [FavoriteImage]
   }
 
   type RootMutation {
     addImage(imageInput: ImageInput): Image
     removeImage(uniq: String!): Image
+    addFavoriteImage(imageInput: ImageInput): FavoriteImage
   }
 
   schema {
