@@ -10,6 +10,14 @@ module.exports = buildSchema(`
     uniq: String!
   }
 
+  type FavoriteImage {
+    _id: ID!
+    file: String!
+    url: String!
+    date: String!
+    uniq: String!
+  }
+
   input ImageInput {
     file: String!
     url: String!
@@ -19,6 +27,7 @@ module.exports = buildSchema(`
 
   type RootQuery {
     images: [Image!]
+    favoriteImages: [FavoriteImage!]
   }
 
   type RootMutation {
