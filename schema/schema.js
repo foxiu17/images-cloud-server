@@ -34,6 +34,7 @@ module.exports = buildSchema(`
     addImage(imageInput: ImageInput): Image
     removeImage(uniq: String!): Image
     addFavoriteImage(imageInput: ImageInput): FavoriteImage
+    removeFavoriteImage(uniq: String!): FavoriteImage
   }
 
   schema {

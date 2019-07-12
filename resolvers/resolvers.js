@@ -65,5 +65,13 @@ module.exports = {
       console.log(err);
       throw err;
     }
-  }
+  },
+
+  removeFavoriteImage: async ({ uniq }) => {
+    return new Promise((resolve, reject) => {
+      favoriteImage.findOneAndDelete({ uniq: uniq }).exec((err, res) => {
+        err ? reject(err) : resolve(res);
+      });
+    });
+  },
 };
